@@ -17,8 +17,10 @@ const float MAX_FPS = 60.0;
         logger_log(logger_inst, LOG_INFO, description " success."); \
     } while(0)
 
+Logger* l;
+
 int main(){
-    Logger* l = logger_new((FILE*)stdout);
+    l = logger_new(stdout);
     GameConsole* g;             
     GameConsoleInterface* gi;
     

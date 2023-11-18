@@ -12,6 +12,6 @@ typedef struct{
 
 Logger* logger_new(FILE* output_file);
 
-void logger_log(Logger* l, LogType t, char* text);
+void logger_log(Logger* l, LogType t, const char* format, ...);
 
 #endif

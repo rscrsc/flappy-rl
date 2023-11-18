@@ -1,3 +1,6 @@
+#ifndef CONSOLE_H
+#define CONSOLE_H
+
 typedef enum{
     GAMEOP_UP = 0,
     GAMEOP_DOWN
@@ -21,3 +24,5 @@ void console_render();
 
 void console_interface_free(GameConsoleInterface* gi);
 void console_free(GameConsole* g);
+
+#endif

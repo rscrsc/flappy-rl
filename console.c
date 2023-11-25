@@ -1,4 +1,5 @@
 #include<stdlib.h>
+#include<raylib.h>
 #include "mydebug.h"
 #include "console.h"
 
@@ -20,11 +21,16 @@ void console_free(GameConsole* g){
 }
 
 void console_operate(GameConsoleInterface* gi, GameOp op){
-    UNIMPLEMENTED("console_operate");
+    if(op == GAMEOP_UP){
+        gi->console->score += 1;
+    }
 }
-void console_update(){
+void console_update(GameConsoleInterface* gi){
     UNIMPLEMENTED("console_update");
 }
-void console_render(){
-    UNIMPLEMENTED("console_render");
+void console_render(GameConsoleInterface* gi){
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+    DrawText(TextFormat("SCORE: %d", gi->console->score), 10, 200, 20, MAROON);
+    EndDrawing();
 }

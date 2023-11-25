@@ -1,26 +1,27 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<raylib.h>
 
 #include "console.h"
-#include "logger.h"
+#include "mylog.h"
 
 #define DEMO_MODE
 const float MAX_FPS = 60.0;
 
 #define TRY(description, condition, logger_inst) \
     do { \
-        logger_log(logger_inst, LOG_INFO, description "..."); \
+        mylog_log(logger_inst, MYLOG_INFO, description "..."); \
         if(condition) { \
-            logger_log(logger_inst, LOG_ERROR, description " failed."); \
+            mylog_log(logger_inst, MYLOG_ERROR, description " failed."); \
             exit(1); \
         } \
-        logger_log(logger_inst, LOG_INFO, description " success."); \
+        mylog_log(logger_inst, MYLOG_INFO, description " success."); \
     } while(0)
 
 Logger* l;
 
 int main(){
-    l = logger_new(stdout);
+    l = mylog_new(stdout);
     GameConsole* g;             
     GameConsoleInterface* gi;
     
@@ -32,10 +33,24 @@ int main(){
                 , l);
 
     #ifdef DEMO_MODE
-    
-    console_operate(gi, GAMEOP_UP);
-    console_update();
-    console_render();
+
+    const int screenWidth = 270;
+    const int screenHeight = 480;
+    SetTraceLogLevel(LOG_ERROR);
+
+    InitWindow(screenWidth, screenHeight, "Flappy-RL Demo");
+    SetTargetFPS(60);
+
+    while (!WindowShouldClose())
+    {
+        if(IsKeyPressed(KEY_SPACE)){
+            console_operate(gi, GAMEOP_UP);
+        }
+        //console_update();
+        console_render(gi);
+
+    }
+    CloseWindow();
 
     #endif
 

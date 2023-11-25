@@ -19,8 +19,8 @@ GameConsole* console_new();
 GameConsoleInterface* console_interface_new(GameConsole* g);
 
 void console_operate(GameConsoleInterface* gi, GameOp op);
-void console_update();
-void console_render();
+void console_update(GameConsoleInterface* gi);
+void console_render(GameConsoleInterface* gi);
 
 void console_interface_free(GameConsoleInterface* gi);
 void console_free(GameConsole* g);

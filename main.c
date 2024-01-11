@@ -34,8 +34,8 @@ int main(){
 
     #ifdef DEMO_MODE
 
-    const int screenWidth = 270;
-    const int screenHeight = 480;
+    const int screenWidth = 288;
+    const int screenHeight = 512;
     SetTraceLogLevel(LOG_ERROR);
 
     InitWindow(screenWidth, screenHeight, "Flappy-RL Demo");
